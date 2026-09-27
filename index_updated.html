@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+  <meta content="Portfolio of Johan Rohith A G &mdash; BCA Student and Aspiring Software Developer." name="description"/>
+  <title>
+   Johan Rohith A G &mdash; Portfolio
+  </title>
+  <!-- Styles -->
+  <style>
+   :root {
+  --bg:#090b10;
+  --surface:#11141c;
+  --text:#f4f5f8;
+  --muted:#a4adbf;
+  --accent:#78aaff;
+  --border:rgba(255,255,255,.1);
+  --max:1120px;
+}
+
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
+body {
+  background:radial-gradient(circle at 78% 25%,rgba(60,100,190,.12),transparent 34%),var(--bg);
+  color:var(--text);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  line-height:1.6;
+}
+
+a {
+  color:inherit;
+  text-decoration:none;
+}
+
+.container {
+  width:min(calc(100% - 48px),var(--max));
+  margin:auto;
+}
+
+section {
+  padding:110px 0;
+}
+
+.section-heading {
+  color:var(--accent);
+  font-size:.95rem;
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-bottom:48px;
+}
+
+.hero {
+  min-height:calc(100svh + 100px);
+  display:flex;
+  align-items:center;
+  padding:70px 0 130px;
+}
+
+.hero-inner {
+  width:100%;
+  max-width:1180px;
+  margin:0 auto;
+  text-align:center;
+}
+
+.eyebrow {
+  display:inline-flex;
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:9px 20px;
+  color:#b9c9ea;
+  font-size:1rem;
+  margin-bottom:38px;
+  background:rgba(255,255,255,.015);
+}
+
+h1 {
+  font-size:clamp(3.6rem,7.2vw,7.1rem);
+  line-height:.98;
+  letter-spacing:-.07em;
+  font-weight:800;
+  white-space:nowrap;
+  max-width:100%;
+  margin:0 auto;
+}
+
+h1 span {
+  color:var(--accent);
+}
+
+.role {
+  margin:34px auto 0;
+  font-size:clamp(1.35rem,2.8vw,2.25rem);
+  line-height:1.25;
+  font-weight:650;
+  color:#c7cfdf;
+  max-width:850px;
+}
+
+.profile {
+  margin:30px auto 0;
+  max-width:820px;
+  color:var(--muted);
+  font-size:1.15rem;
+  line-height:1.8;
+}
+
+.hero-links {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  margin-top:28px;
+}
+
+.social-link {
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  color:#dbe4f7;
+  font-weight:650;
+  transition:.2s;
+}
+
+.social-link:hover {
+  color:var(--accent);
+  transform:translateY(-2px);
+}
+
+.social-link svg {
+  width:22px;
+  height:22px;
+  fill:currentColor;
+}
+
+.divider {
+  width:1px;
+  height:22px;
+  background:var(--border);
+}
+
+.buttons {
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  margin-top:34px;
+  flex-wrap:wrap;
+}
+
+.button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:58px;
+  padding:0 28px;
+  border-radius:15px;
+  border:1px solid var(--border);
+  font-weight:750;
+  font-size:1rem;
+  transition:.2s;
+}
+
+.button:hover {
+  transform:translateY(-3px);
+  border-color:rgba(120,170,255,.45);
+}
+
+.button.primary {
+  background:#f4f5f8;
+  color:#0a0c11;
+  border-color:transparent;
+}
+
+.button.secondary {
+  background:transparent;
+}
+
+.about-grid {
+  display:grid;
+  grid-template-columns:1fr 1.5fr;
+  gap:70px;
+}
+
+.large-copy {
+  font-size:clamp(1.7rem,3vw,2.7rem);
+  line-height:1.25;
+  letter-spacing:-.03em;
+  font-weight:700;
+}
+
+.body-copy {
+  color:var(--muted);
+  font-size:1.08rem;
+  line-height:1.85;
+}
+
+.skills-grid,.interests-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.card {
+  background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:30px;
+}
+
+.card h3 {
+  font-size:1.2rem;
+  margin-bottom:9px;
+}
+
+.card p {
+  color:var(--muted);
+}
+
+.level {
+  color:var(--accent)!important;
+  font-size:.9rem;
+  font-weight:700;
+  margin-top:13px;
+}
+
+.project-card {
+  display:grid;
+  grid-template-columns:1.6fr .8fr;
+  gap:35px;
+  align-items:center;
+  padding:38px;
+}
+
+.project-card h3 {
+  font-size:clamp(1.8rem,4vw,3rem);
+  letter-spacing:-.04em;
+  margin-bottom:14px;
+}
+
+.project-card p {
+  color:var(--muted);
+  max-width:700px;
+  line-height:1.8;
+}
+
+.project-action {
+  justify-self:end;
+}
+
+.education {
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:25px;
+  align-items:center;
+}
+
+.education h3 {
+  font-size:1.55rem;
+  margin-bottom:6px;
+}
+
+.education p {
+  color:var(--muted);
+}
+
+.year {
+  color:var(--accent);
+  font-weight:800;
+  white-space:nowrap;
+}
+
+.socials {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:18px;
+}
+
+.social-card {
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
+  min-width:180px;
+  padding:17px 22px;
+  border:1px solid var(--border);
+  border-radius:15px;
+  background:rgba(255,255,255,.02);
+  transition:.2s;
+}
+
+.social-card:hover {
+  transform:translateY(-3px);
+  border-color:rgba(120,170,255,.4);
+}
+
+.social-card svg {
+  width:22px;
+  height:22px;
+  fill:currentColor;
+}
+
+.social-card span {
+  color:#d7deec;
+  font-weight:650;
+}
+
+.cv-button {
+  margin:0 auto;
+  min-width:220px;
+}
+
+.projects-cta {
+  display:flex;
+  justify-content:center;
+  margin-top:28px;
+}
+
+.projects-link {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 22px;
+  border:1px solid rgba(120,170,255,.3);
+  border-radius:14px;
+  color:#cbd9f4;
+  font-weight:700;
+  background:rgba(120,170,255,.04);
+  transition:.2s;
+}
+
+.projects-link:hover {
+  transform:translateY(-2px);
+  border-color:rgba(120,170,255,.6);
+  background:rgba(120,170,255,.08);
+}
+
+.projects-link span {
+  color:var(--accent);
+  font-size:1.1rem;
+}
+
+footer {
+  border-top:1px solid var(--border);
+  padding:32px 24px;
+  text-align:center;
+  color:#7f889a;
+  font-size:.9rem;
+}
+
+@media(max-width:800px) {
+  section{padding:85px 0;
+}
+
+.about-grid,.project-card {
+  grid-template-columns:1fr;
+}
+
+.skills-grid,.interests-grid {
+  grid-template-columns:1fr;
+}
+
+.project-action {
+  justify-self:start;
+}
+
+.education {
+  grid-template-columns:1fr;
+}
+
+@media(max-width:560px) {
+  .container{width:min(calc(100% - 32px),var(--max));
+}
+
+.hero {
+  min-height:calc(100svh + 90px);
+  padding:42px 0 100px;
+}
+
+.eyebrow {
+  margin-bottom:30px;
+}
+
+h1 {
+  font-size:clamp(2.35rem,9.5vw,2.85rem);
+  letter-spacing:-.075em;
+  white-space:nowrap;
+}
+
+.role {
+  font-size:1.22rem;
+  margin-top:26px;
+}
+
+.profile {
+  font-size:1rem;
+  line-height:1.62;
+  margin-top:22px;
+}
+
+.hero-links {
+  flex-wrap:wrap;
+  margin-top:24px;
+}
+
+.divider {
+  display:block;
+}
+
+.buttons {
+  margin-top:30px;
+}
+
+.button {
+  width:auto;
+  flex:1 1 0;
+  min-height:58px;
+  padding:0 18px;
+}
+  </style>
+ </head>
+ <body>
+  <main>
+
+  <!-- Hero Section -->
+   <section class="hero" id="home">
+    <div class="container">
+     <div class="hero-inner">
+      <div class="eyebrow">
+       BCA &middot; II Year
+      </div>
+      <h1>
+       Johan Rohith
+       <span>
+        A G
+       </span>
+      </h1>
+      <p class="role">Aspiring Software Developer</p>
+      <div class="hero-links">
+       <a aria-label="LinkedIn" class="social-link" href="https://linkedin.com/in/johanrohith" rel="noopener" target="_blank">
+        <svg viewbox="0 0 24 24">
+         <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.99h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.3ZM5.32 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM3.54 20.45h3.57V8.99H3.54v11.46ZM22.22 0H1.77C.79 0 0 .78 0 1.75v20.5C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0Z">
+         </path>
+        </svg>
+        LinkedIn
+       </a>
+       <span class="divider">
+       </span>
+       <a aria-label="GitHub" class="social-link" href="https://github.com/johanrohith" rel="noopener" target="_blank">
+        <svg viewbox="0 0 24 24">
+         <path d="M12 .3a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.74.08-.74 1.2.08 1.84 1.23 1.84 1.23 1.07 1.83 2.8 1.3 3.48.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.6-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.28c0 .32.22.7.83.58A12 12 0 0 0 12 .3Z">
+         </path>
+        </svg>
+        GitHub
+       </a>
+      </div>
+      <div class="buttons">
+       <a class="button secondary cv-button" download="" href="#">
+        Download CV
+       </a>
+      </div>
+     </div>
+    </div>
+   </section>
+
+  <!-- About Section -->
+   <section id="about">
+    <div class="container">
+     <div class="section-heading">
+      01 &middot; About
+     </div>
+     <div class="about-grid">
+      <p class="large-copy">
+       Building my foundation in software development, one project at a time.
+      </p>
+      <p class="body-copy">
+       I'm currently pursuing a Bachelor of Computer Applications at Madras Christian College and working toward becoming a software developer. My focus is on strengthening my programming fundamentals, learning Java and web development, and turning what I learn into practical projects.
+      </p>
+     </div>
+    </div>
+   </section>
+
+  <!-- Skills Section -->
+   <section id="skills">
+    <div class="container">
+     <div class="section-heading">
+      02 &middot; Skills
+     </div>
+     <div class="skills-grid">
+      <article class="card">
+       <h3>
+        C
+       </h3>
+       <p class="level">
+        Basic
+       </p>
+      </article>
+      <article class="card">
+       <h3>
+        HTML &amp; CSS
+       </h3>
+       <p class="level">
+        Basic
+       </p>
+      </article>
+      <article class="card">
+       <h3>
+        Java
+       </h3>
+       <p class="level">
+        Learning
+       </p>
+      </article>
+     </div>
+    </div>
+   </section>
+
+  <!-- Projects Section -->
+   <section id="projects">
+    <div class="container">
+     <div class="section-heading">
+      03 &middot; Projects
+     </div>
+     <article class="card project-card">
+      <div>
+       <h3>
+        MCC Waste Exchange Portal
+       </h3>
+       <p>
+        A project focused on creating a digital platform for exchanging reusable or unwanted items within the college community.
+       </p>
+      </div>
+      <div class="project-action">
+       <a class="button secondary" href="https://github.com/johanrohith/mcc-waste-exchange" rel="noopener" target="_blank">
+        GitHub Repository
+       </a>
+      </div>
+     </article>
+     <div class="projects-cta">
+      <a class="projects-link" href="https://github.com/johanrohith?tab=repositories" rel="noopener" target="_blank">
+       View Projects on GitHub
+       <span>
+        &nearrow;
+       </span>
+      </a>
+     </div>
+    </div>
+   </section>
+
+  <!-- Education Section -->
+   <section id="education">
+    <div class="container">
+     <div class="section-heading">
+      04 &middot; Education
+     </div>
+     <div class="card education">
+      <div>
+       <h3>
+        Bachelor of Computer Applications (BCA)
+       </h3>
+       <p>
+        Madras Christian College &middot; II Year
+       </p>
+      </div>
+      <div class="year">
+       Expected 2028
+      </div>
+     </div>
+    </div>
+   </section>
+
+  <!-- Interests Section -->
+   <section id="interests">
+    <div class="container">
+     <div class="section-heading">
+      05 &middot; Interests
+     </div>
+     <div class="interests-grid">
+      <article class="card">
+       <h3>
+        Creative Story Writing
+       </h3>
+       <p>
+        Writing fictional and realistic stories with a focus on characters, situations and narrative development.
+       </p>
+      </article>
+     </div>
+    </div>
+   </section>
+
+  <!-- Social Section -->
+   <section id="social">
+    <div class="container">
+     <div class="section-heading">
+      06 &middot; Social Profiles
+     </div>
+     <div class="socials">
+      <a aria-label="Instagram" class="social-card" href="https://instagram.com/johanrohith" rel="noopener" target="_blank">
+       <svg viewbox="0 0 24 24">
+        <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5Zm8.75 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z">
+        </path>
+       </svg>
+       <span>
+        @johanrohith
+       </span>
+      </a>
+      <a aria-label="X" class="social-card" href="https://x.com/johanrohith" rel="noopener" target="_blank">
+       <svg viewbox="0 0 24 24">
+        <path d="M18.9 2H22l-6.77 7.74L23.2 22h-6.4l-5.02-6.56L6.04 22H2.93l7.24-8.28L2.2 2h6.56l4.54 5.99L18.9 2Zm-1.09 17.9h1.72L7.67 4H5.82L17.81 19.9Z">
+        </path>
+       </svg>
+       <span>
+        @johanrohith
+       </span>
+      </a>
+     </div>
+    </div>
+   </section>
+  </main>
+
+<!-- Footer -->
+  <footer>
+   &copy; 2026 Johan Rohith A G. All rights reserved.
+  </footer>
+ </body>
+</html>
