@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="A personal space of Johan Rohith for the things built, stories written, questions explored, and ideas that refuse to stay ideas." name="description"/>
+<meta property="og:image" content="https://johanrohith.me/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="Johan Rohith">
+<link rel="icon" type="image/png" href="favicon.png">
+<title>Johan Rohith</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Pixelify+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{
+  --bg:#08090d; --paper:#eeece6; --muted:#a1a5ae; --ink:#111318;
+  --line:rgba(255,255,255,.12); --blue:#5ea8ff; --blue2:#2c6eff;
+  --green:#91ffb4; --warm:#d5b48b; --max:1280px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{background:radial-gradient(circle at 83% 8%,rgba(42,91,191,.16),transparent 28%),radial-gradient(circle at 12% 42%,rgba(69,42,145,.09),transparent 25%),var(--bg);color:#f4f4f1;font-family:"Space Grotesk",system-ui,sans-serif;line-height:1.55;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+::selection{background:rgba(94,168,255,.25)}
+
+.progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--blue2),#9bd1ff);z-index:1000}
+.noise{position:fixed;inset:0;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");z-index:999}
+.container{width:min(calc(100% - 48px),var(--max));margin:0 auto}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;mix-blend-mode:screen;pointer-events:none}
+.topbar a,.topbar button{pointer-events:auto}
+.mark{font:600 13px "DM Mono",monospace;letter-spacing:.14em;opacity:.9}
+.refresh{border:1px solid var(--line);background:rgba(0,0,0,.22);color:#fff;border-radius:999px;width:38px;height:38px;cursor:pointer;backdrop-filter:blur(12px);transition:.25s;position:relative}
+.refresh:hover{transform:rotate(180deg);border-color:rgba(94,168,255,.6);box-shadow:0 0 30px rgba(94,168,255,.17)}
+
+section{position:relative}
+.hero{min-height:100svh;display:flex;align-items:center;padding:110px 0 90px}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:48px;align-items:center}
+.hero-copy{position:relative;z-index:2}
+.kicker{font:500 12px "DM Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:#8f96a6;margin-bottom:20px}
+.name{font-family:"Pixelify Sans",monospace;font-size:clamp(4rem,10vw,9.8rem);font-weight:600;line-height:.82;letter-spacing:-.07em;display:flex;flex-direction:column;text-transform:none}
+.name .pixel{color:#f5f5f1;text-shadow:1px 1px 0 rgba(94,168,255,.15),4px 4px 0 rgba(94,168,255,.06)}
+.name .editorial{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:.78em;letter-spacing:-.08em;margin-left:4.8vw;margin-top:.06em}
+.hero-line{font-size:clamp(1.3rem,2.3vw,2rem);max-width:760px;margin-top:34px;letter-spacing:-.025em;color:#e7e8e5}
+.hero-line strong{color:#fff}
+.meta{margin-top:24px;color:#abb0bb;font-size:1rem}
+.meta a{color:#d7deea;border-bottom:1px solid rgba(255,255,255,.25)}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.cta{padding:13px 17px;border:1px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(255,255,255,.03);transition:.2s}
+.cta:hover{transform:translateY(-2px);border-color:rgba(94,168,255,.55);background:rgba(94,168,255,.06)}
+.cta.primary{background:#ecece8;color:#101217;border-color:transparent}
+
+.hero-art{position:relative;min-height:540px;display:flex;align-items:center;justify-content:center}
+.orbit{position:absolute;width:440px;height:440px;border:1px solid rgba(94,168,255,.17);border-radius:50%;transform:rotate(16deg);animation:orbit 28s linear infinite}
+.orbit:before,.orbit:after{content:"";position:absolute;border-radius:50%;background:var(--blue);box-shadow:0 0 20px rgba(94,168,255,.8)}
+.orbit:before{width:8px;height:8px;top:42px;left:50%}.orbit:after{width:5px;height:5px;bottom:62px;right:50px}
+.identity{position:relative;width:min(100%,510px);aspect-ratio:1/1;border:1px solid rgba(255,255,255,.11);background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.015));backdrop-filter:blur(14px);overflow:hidden;clip-path:polygon(8% 0,100% 0,92% 100%,0 100%);display:flex;align-items:center;justify-content:center}
+.identity:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 45%,rgba(94,168,255,.08) 49%,transparent 52%);transform:translateX(-120%);animation:sweep 8s ease-in-out infinite}
+.identity-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(94,168,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(94,168,255,.08) 1px,transparent 1px);background-size:34px 34px;opacity:.4}
+.avatar-glyph{width:180px;height:180px;border-radius:34%;border:1px solid rgba(94,168,255,.28);background:radial-gradient(circle at 45% 38%,rgba(94,168,255,.22),rgba(10,16,28,.72) 56%,rgba(8,9,13,.94));box-shadow:0 0 60px rgba(44,110,255,.15),inset 0 0 40px rgba(94,168,255,.08);display:grid;place-items:center;transform:rotate(-7deg);z-index:2}
+.avatar-glyph::before{content:"JR";font:700 68px/1 "Pixelify Sans",monospace;letter-spacing:.02em;color:#e9f5ff;text-shadow:0 0 18px rgba(94,168,255,.45)}
+.avatar-glyph::after{content:"IDENTITY // 01";position:absolute;bottom:18px;right:18px;font:400 9px "DM Mono",monospace;letter-spacing:.18em;color:#8294a9}
+.sticker{position:absolute;font:400 10px "DM Mono",monospace;color:#b9c6d5;border:1px solid rgba(255,255,255,.1);background:rgba(2,5,8,.55);backdrop-filter:blur(8px);padding:8px 10px;border-radius:8px;z-index:3;box-shadow:0 8px 30px rgba(0,0,0,.18)}
+.sticker.java{left:8%;top:18%;transform:rotate(-7deg)}.sticker.astra{right:10%;top:13%;transform:rotate(5deg)}.sticker.story{left:4%;bottom:17%;transform:rotate(4deg)}.sticker.chennai{right:6%;bottom:25%;transform:rotate(-4deg)}.sticker.date{right:13%;bottom:8%;color:#7fa1c5}.sticker.build{left:13%;top:8%;color:var(--green)}
+.tesseract{position:absolute;left:50%;top:50%;width:116px;height:116px;transform:translate(-50%,-50%) rotateX(18deg) rotateY(35deg) rotateZ(9deg);transform-style:preserve-3d;z-index:1;opacity:.5;animation:float 5s ease-in-out infinite}
+.tesseract i{position:absolute;inset:0;border:1px solid #5ea8ff;box-shadow:0 0 22px rgba(44,110,255,.12);transform-style:preserve-3d}
+.tesseract i:nth-child(2){transform:rotateY(60deg)}.tesseract i:nth-child(3){transform:rotateX(60deg)}
+.terminal{position:absolute;right:-20px;bottom:-26px;width:300px;border:1px solid rgba(255,255,255,.12);background:#0a0d12ee;box-shadow:0 30px 60px rgba(0,0,0,.4);padding:14px 16px;z-index:5;transform:rotate(2deg);backdrop-filter:blur(10px)}
+.term-head{display:flex;gap:6px;margin-bottom:10px}.dot{width:7px;height:7px;border-radius:50%;background:#414854}.term-body{font:400 11px/1.75 "DM Mono",monospace;color:#aeb9c9}.term-body .ok{color:var(--green)}.term-body .dim{color:#667083}
+
+.scroll-note{font:400 12px "DM Mono",monospace;letter-spacing:.14em;color:#6d7582;text-transform:uppercase;padding:24px 0 30px;border-top:1px solid var(--line)}
+.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);white-space:nowrap}
+.marquee-track{display:inline-block;min-width:max-content;padding:15px 0;animation:marquee 30s linear infinite;font-size:14px;letter-spacing:.12em;color:#c7cbd3}
+.marquee em{font-style:normal;color:var(--blue)}
+
+.section{padding:105px 0}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:48px}
+.index{font:400 12px "DM Mono",monospace;color:#707785;letter-spacing:.14em;text-transform:uppercase}
+.title{font-size:clamp(2.7rem,6vw,6rem);letter-spacing:-.065em;line-height:.95}
+.subtitle{max-width:490px;color:#9fa5b0;margin-top:14px}
+
+.now{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px}
+.now-big{font-size:clamp(2rem,4.3vw,4.6rem);line-height:1.02;letter-spacing:-.05em}
+.now-list{display:grid;gap:0;border-top:1px solid var(--line)}
+.now-row{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid var(--line)}
+.now-row span{font:400 11px "DM Mono",monospace;color:#6e7480;text-transform:uppercase;letter-spacing:.13em}.now-row p{color:#d6d8db}
+
+.build-grid{display:grid;grid-template-columns:1.22fr .78fr;gap:24px;align-items:stretch}
+.build{border-top:1px solid var(--line);padding-top:15px;position:relative}
+.build.large{grid-row:span 2}
+.visual{aspect-ratio:16/10;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.11);background:#0d1017}
+.visual::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 48%,rgba(255,255,255,.07) 50%,transparent 52%);transform:translateX(-140%);transition:transform .8s}
+.build:hover .visual::after{transform:translateX(140%)}
+.visual.exchange{background:linear-gradient(135deg,#18361f,#112014 55%,#07100b)}
+.visual.campus{background:linear-gradient(135deg,#171c2d,#0e1320)}
+.visual.compiler{background:linear-gradient(135deg,#11141c,#090c11)}
+.mock-browser{position:absolute;inset:7% 7%;border:1px solid rgba(255,255,255,.16);background:#f4f5f1;color:#111;border-radius:12px;box-shadow:0 24px 60px rgba(0,0,0,.35);overflow:hidden;transform:rotate(-2deg);transition:.35s}
+.build:hover .mock-browser{transform:rotate(0) translateY(-5px)}
+.browser-bar{height:11%;background:#e6e7e2;border-bottom:1px solid #d3d4ce;display:flex;align-items:center;gap:6px;padding:0 12px}.browser-dot{width:6px;height:6px;border-radius:50%;background:#999}.mock-content{padding:18px}.mock-nav{display:flex;justify-content:space-between;font-weight:700;font-size:12px;margin-bottom:17px}.mock-hero{font-size:29px;line-height:1;margin-bottom:10px}.mock-sub{font-size:9px;color:#70736d;max-width:280px}.mock-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}.mock-card{height:80px;border:1px solid #d7d8d2;border-radius:7px;background:#fff;position:relative}.mock-card::after{content:"";position:absolute;left:9px;right:9px;bottom:9px;height:5px;background:#d8dad5}
+.campus-board{position:absolute;inset:9%;display:grid;grid-template-columns:1.2fr .8fr;gap:13px}.slide{border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04);padding:16px;border-radius:8px}.slide h4{font-size:22px;margin-bottom:8px}.slide p{font-size:9px;color:#aeb7c8}.slide-lines{margin-top:18px;display:grid;gap:7px}.slide-lines i{display:block;height:6px;background:rgba(255,255,255,.12);border-radius:3px}.slide-lines i:nth-child(1){width:80%}.slide-lines i:nth-child(2){width:62%}.slide-lines i:nth-child(3){width:72%}
+.compiler-ui{position:absolute;inset:9%;display:grid;grid-template-columns:1fr .82fr;gap:9px}.code,.output{border:1px solid rgba(255,255,255,.12);background:#080b10;padding:14px;font:400 9px/1.7 "DM Mono",monospace;border-radius:8px}.code{color:#b9d8ff}.output{color:#96d6a8}.code b{color:#82b8ff}.output b{color:#fff}
+.build-info{padding:18px 0 8px}.build-num{font:400 10px "DM Mono",monospace;color:#707785;letter-spacing:.12em}.build h3{font-size:clamp(1.8rem,3vw,3rem);letter-spacing:-.045em;margin-top:4px}.build p{color:#9ea4ae;max-width:690px;margin-top:9px}.build-links{display:flex;gap:14px;margin-top:13px;font:500 11px "DM Mono",monospace;color:#ced6e1}.build-links a{border-bottom:1px solid rgba(255,255,255,.2)}
+
+.elsewhere{background:#0b0c10}
+.else-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.note{border:1px solid rgba(255,255,255,.1);background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.012));padding:26px;min-height:290px;position:relative;overflow:hidden;transition:.3s}
+.note:hover{transform:translateY(-4px);border-color:rgba(94,168,255,.35)}
+.note::before{content:"";position:absolute;width:190px;height:190px;border-radius:50%;right:-85px;top:-85px;background:radial-gradient(circle,rgba(94,168,255,.16),transparent 70%)}
+.note-meta{font:400 10px "DM Mono",monospace;color:#697280;letter-spacing:.13em;text-transform:uppercase}.note h3{font-size:2rem;letter-spacing:-.04em;margin-top:14px;max-width:520px}.note p{color:#9ea4ae;margin-top:10px;max-width:530px}.note a{position:absolute;left:26px;bottom:24px;font:500 11px "DM Mono",monospace;color:#dce4ee}.note.wide{grid-column:span 2;min-height:220px;background:linear-gradient(110deg,rgba(94,168,255,.06),rgba(255,255,255,.018))}
+
+.mind{padding:120px 0 100px}
+.mind-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:start}
+.manifesto{font-size:clamp(2rem,4.6vw,5.3rem);line-height:1.02;letter-spacing:-.055em}.manifesto span{color:var(--blue)}
+.pills{display:grid;gap:10px}.pill{border:1px solid var(--line);padding:12px 15px;font:400 11px "DM Mono",monospace;color:#b8bec8}.pill strong{color:#f1f2ef;font-weight:500}
+.quote-strip{margin-top:72px;border-left:2px solid var(--blue);padding:18px 0 18px 22px;color:#dfe3e8;max-width:800px;font-size:1.25rem}
+
+.trail{display:grid;grid-template-columns:150px 1fr;gap:16px;border-top:1px solid var(--line)}
+.trail-item{display:contents}.trail-year,.trail-desc{padding:18px 0;border-bottom:1px solid var(--line)}.trail-year{font:400 12px "DM Mono",monospace;color:#6c7380}.trail-desc{color:#d7d9dd}
+
+.minecraft{display:grid;grid-template-columns:.8fr 1.2fr;gap:36px;align-items:center}.voxel{height:330px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1);background:linear-gradient(#83b6e2 0 46%,#5c9a4c 46% 67%,#6c4f33 67%);image-rendering:pixelated}.voxel:before{content:"";position:absolute;inset:0;background:linear-gradient(45deg,rgba(255,255,255,.09) 25%,transparent 25% 50%,rgba(255,255,255,.05) 50% 75%,transparent 75%);background-size:80px 80px;opacity:.45}.block{position:absolute;width:74px;height:74px;background:#6ba04d;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12),8px 8px 0 rgba(0,0,0,.12)}.b1{left:13%;bottom:18%}.b2{left:30%;bottom:33%;background:#8b643e;transform:rotate(45deg) scale(.9)}.b3{right:20%;bottom:25%;background:#7aa75c}.b4{right:8%;top:18%;width:48px;height:48px;background:#5d8c45}.voxel-label{position:absolute;left:18px;bottom:16px;font:500 11px "DM Mono",monospace;color:#f5f5f3;letter-spacing:.12em}
+
+.next{padding:120px 0}.next-copy{max-width:920px}.next h2{font-size:clamp(3rem,7vw,7.3rem);letter-spacing:-.065em;line-height:.9}.next p{font-size:clamp(1.5rem,3vw,3rem);line-height:1.12;letter-spacing:-.035em;margin-top:35px}.next p span{display:block;color:#cfd2d8}.next p span:nth-child(2){color:#83b2ee}.next p span:nth-child(3){color:#d8c09e}.next p span:nth-child(4){color:#9de6b4}.next .soft{font-size:1rem;line-height:1.7;color:#8f96a3;max-width:650px;margin-top:30px}
+
+.about{display:grid;grid-template-columns:.75fr 1.25fr;gap:60px}.about-copy{font-size:1.1rem;line-height:1.9;color:#b8bdc7;max-width:720px}.about-note{font:400 12px/1.8 "DM Mono",monospace;color:#6f7684;border-left:1px solid var(--line);padding-left:18px}
+.contact{padding:130px 0 90px;text-align:center}.contact h2{font-size:clamp(3.5rem,8vw,8rem);letter-spacing:-.08em;line-height:.9}.contact p{font-size:clamp(1.15rem,2vw,1.5rem);color:#b0b4bd;margin:25px auto 35px}.contact-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.contact-links a{min-width:135px;padding:13px 15px;border:1px solid var(--line);border-radius:12px;color:#d8dce3;transition:.2s}.contact-links a:hover{border-color:rgba(94,168,255,.55);transform:translateY(-2px)}
+.random{margin-top:92px;border-top:1px solid var(--line);padding-top:28px}.random button{border:0;background:none;color:#9ebfed;cursor:pointer;font:500 11px "DM Mono",monospace;letter-spacing:.13em;text-transform:uppercase}.random-result{margin-top:14px;color:#dadde2;min-height:25px}
+footer{border-top:1px solid var(--line);padding:28px 0 34px;color:#707682;font:400 10px "DM Mono",monospace;display:flex;justify-content:space-between;gap:15px}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .75s ease,transform .75s ease}.reveal.in{opacity:1;transform:none}
+@keyframes orbit{to{transform:rotate(376deg)}}
+@keyframes float{0%,100%{transform:translate(-50%,-50%) rotateX(18deg) rotateY(35deg) translateY(0)}50%{transform:translate(-50%,-50%) rotateX(18deg) rotateY(35deg) translateY(-12px)}}
+@keyframes sweep{0%,45%{transform:translateX(-120%)}75%,100%{transform:translateX(120%)}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+@media(max-width:980px){.hero-grid,.now,.mind-grid,.minecraft,.about{grid-template-columns:1fr}.hero-art{min-height:520px;order:-1}.build-grid{grid-template-columns:1fr}.build.large{grid-row:auto}.else-grid{grid-template-columns:1fr}.note.wide{grid-column:span 1}.terminal{right:-6px;bottom:-18px}.orbit{width:360px;height:360px}}
+@media(max-width:650px){.container{width:min(calc(100% - 28px),var(--max))}.topbar{padding:12px 14px}.hero{padding-top:90px}.hero-grid{gap:18px}.name{font-size:clamp(3.35rem,18vw,6rem)}.name .editorial{margin-left:7vw}.hero-art{min-height:410px}.identity{width:100%}.avatar-glyph{width:130px;height:130px}.avatar-glyph::before{font-size:50px}.tesseract{width:90px;height:90px}.terminal{width:245px;font-size:10px}.sticker{font-size:9px;padding:6px 8px}.section,.mind,.next{padding:82px 0}.title{font-size:2.7rem}.section-head{display:block}.subtitle{margin-top:16px}.now-row{grid-template-columns:110px 1fr}.mock-hero{font-size:21px}.mock-cards{gap:4px}.mock-card{height:60px}.campus-board,.compiler-ui{inset:7%}.campus-board{grid-template-columns:1fr}.campus-board .slide:nth-child(2){display:none}.compiler-ui{grid-template-columns:1fr}.compiler-ui .output{display:none}.minecraft .voxel{height:250px}.contact{padding:90px 0 70px}footer{display:block}footer span{display:block;margin-top:8px}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div><div class="noise"></div>
+<div class="topbar"><div class="mark">JR // JOHAN ROHITH</div><button class="refresh" id="refresh" aria-label="Refresh visual state">↻</button></div>
+
+<header class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="hero-copy reveal">
+      <div class="kicker">casual internet user since 2018</div>
+      <div class="name"><span class="pixel">Johan</span><span class="editorial">Rohith</span></div>
+      <p class="hero-line">I build software, stories, and experiments from <strong>ideas that refuse to stay ideas.</strong></p>
+      <p class="meta">Doing BCA now. Java and the web are cool. Building from <a href="https://www.google.com/maps/search/?api=1&query=Chennai" target="_blank" rel="noopener">📍 Chennai</a>.</p>
+      <div class="ctas"><a class="cta primary" href="#builds">See what I’ve made ↘</a><a class="cta" href="#elsewhere">Go elsewhere ↘</a></div>
+    </div>
+    <div class="hero-art reveal">
+      <div class="orbit"></div>
+      <div class="identity">
+        <div class="identity-grid"></div>
+        <div class="tesseract"><i></i><i></i><i></i></div>
+        <div class="avatar-glyph" aria-label="Abstract digital identity mark"></div>
+        <div class="sticker build">CURRENTLY BUILDING...</div>
+        <div class="sticker java">JAVA</div><div class="sticker astra">IDEAS / ASTRA</div>
+        <div class="sticker story">STORIES</div><div class="sticker chennai">CHENNAI / IN</div><div class="sticker date">19/08/2023</div>
+        <div class="terminal">
+          <div class="term-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="term-body"><div><span class="dim">$</span> whoami</div><div>johan rohith</div><div><span class="dim">$</span> status</div><div class="ok">building / writing / thinking</div><div><span class="dim">$</span> next</div><div>something I haven’t made yet.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee"><div class="marquee-track">“<em>A good story shouldn’t end when you reach the last line.</em> It should continue in your head.”　·　BUILD　·　WRITE　·　QUESTION　·　EXPERIMENT　·　BUILD　·　WRITE　·　QUESTION　·　EXPERIMENT　·　</div></div>
+
+<section class="section" id="now"><div class="container">
+  <div class="section-head reveal"><div><div class="index">NOW / 01</div><h2 class="title">What I’ve been doing.</h2><p class="subtitle">Not a résumé. Just the things I’m actually spending time on.</p></div></div>
+  <div class="now reveal">
+    <div class="now-big">Building things.<br>Writing things.<br>Thinking too much<br>about things.</div>
+    <div class="now-list">
+      <div class="now-row"><span>learning</span><p>Building stronger foundations in Java and web development.</p></div>
+      <div class="now-row"><span>making</span><p>Turning practical problems and strange ideas into prototypes and experiences.</p></div>
+      <div class="now-row"><span>writing</span><p>Creative stories, questions, theories, observations, and things that refuse to fit into a normal category.</p></div>
+      <div class="now-row"><span>exploring</span><p>Technology, stories, philosophy, science of existence, reality, dimensions, timelines, and the places where those ideas collide.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="section" id="builds"><div class="container">
+  <div class="section-head reveal"><div><div class="index">BUILDS / 02</div><h2 class="title">Things I’ve Done.</h2><p class="subtitle">A small trail of things I’ve actually made, explored, studied, or presented.</p></div></div>
+  <div class="build-grid">
+    <article class="build large reveal">
+      <div class="visual exchange"><div class="mock-browser"><div class="browser-bar"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div><div class="mock-content" style="padding:0;height:89%;overflow:hidden;"><img src="assets/mcc-waste-exchange/mcc-hero.jpg" alt="MCC Waste Exchange homepage" style="width:100%;height:100%;object-fit:cover;display:block;"></div></div></div>
+      <div class="build-info"><div class="build-num">BUILD / 01</div><h3>MCC Waste Exchange</h3><p>A campus exchange platform. A practical idea turned into a public web project, with browsing, posting, images, categories and an admin side.</p><div class="build-links"><a href="https://github.com/johanrohith/mcc-waste-exchange" target="_blank" rel="noopener">SOURCE ↗</a><a href="https://johanrohith.github.io/mcc-waste-exchange/" target="_blank" rel="noopener">LIVE ↗</a><a href="https://github.com/johanrohith/java-compiler" target="_blank" rel="noopener">SOURCE →</a></div></div>
+    </article>
+    <article class="build reveal">
+      <div class="visual campus"><div class="campus-board"><div class="slide" style="padding:0;overflow:hidden;"><img src="assets/campus-care/slides/cover.png" alt="Campus Care presentation cover" style="width:100%;height:100%;object-fit:cover;display:block;"></div><div class="slide" style="padding:0;overflow:hidden;"><img src="assets/campus-care/slides/slide-16.png" alt="Campus Care student interface preview" style="width:100%;height:100%;object-fit:cover;display:block;"></div></div></div>
+      <div class="build-info"><div class="build-num">BUILD / 02</div><h3>Campus Care</h3><p>A project concept presented as a working product story. The presentation becomes the artifact.</p><div class="build-links"><a href="downloads/Campus-Care.pptx">PRESENTATION ↘</a><a href="downloads/Campus-Care.pptx">DETAILS →</a></div></div>
+    </article>
+    <article class="build reveal">
+      <div class="visual compiler"><div class="compiler-ui"><div class="code" style="padding:0;overflow:hidden;"><img src="assets/java-awt-compiler/java-awt-compiler-empty.jpg" alt="Java AWT Compiler editor" style="width:100%;height:100%;object-fit:cover;display:block;"></div><div class="output" style="padding:0;overflow:hidden;"><img src="assets/java-awt-compiler/java-awt-compiler-running.jpg" alt="Java AWT Compiler running an AWT program" style="width:100%;height:100%;object-fit:cover;display:block;"></div></div></div>
+      <div class="build-info"><div class="build-num">BUILD / 03</div><h3>Java AWT Compiler</h3><p>I needed a browser-based way to experiment with Java AWT. There wasn’t one that fit what I needed, so I made one.</p><div class="build-links"><a href="https://github.com/johanrohith/java-compiler" target="_blank" rel="noopener">SOURCE ↗</a><a href="#" onclick="return false">CASE STUDY →</a></div></div>
+    </article>
+  </div>
+</div></section>
+
+<section class="mind" id="mind"><div class="container">
+  <div class="section-head reveal"><div><div class="index">MIND / 03</div><h2 class="title">My Mind.</h2><p class="subtitle">A visual map of the ideas I keep coming back to.</p></div></div>
+  <div class="mind-grid reveal">
+    <div class="manifesto">Coming later.<br><br><span>Visuals</span> will do the talking here.</div>
+    <div><div class="quote-strip">My dimensions, timelines, universes and reality thought experiments — shown as diagrams and visual models.</div></div>
+  </div>
+</div></section>
+
+<section class="section elsewhere" id="elsewhere"><div class="container">
+  <div class="section-head reveal"><div><div class="index">ELSEWHERE / 04</div><h2 class="title">Elsewhere.</h2><p class="subtitle">A home for the things that don’t belong anywhere else.</p></div></div>
+  <div class="else-grid">
+    <article class="note reveal"><div class="note-meta">STORY / LITERATURE</div><h3>Echoes of the End</h3><p>A literature-style long-form story set across Zinthara, Astralaya, Ashar, Rio, and the Unknown.</p><a href="pages/echoes-of-the-end.html">READ THE STORY →</a></article>
+    <article class="note reveal"><div class="note-meta">THOUGHT EXPERIMENT</div><h3>4D → 5D / Timelines, universes, possibility.</h3><p>Your own diagrammed exploration of what multiple timelines and universes might look like as a conceptual model.</p><a href="#" onclick="return false">OPEN IDEA →</a></article>
+    <article class="note wide reveal"><div class="note-meta">MEDIA / VIDEO</div><h3>The song I made with AI.</h3><p>An original creative experiment, embedded directly into the site.</p><video controls preload="metadata" playsinline style="display:block;width:100%;max-height:520px;margin-top:18px;border:1px solid rgba(255,255,255,.1);background:#05070a;"><source src="assets/elsewhere/ai-song.mp4" type="video/mp4">Your browser does not support embedded video.</video></article>
+    <article class="note reveal"><div class="note-meta">QUESTION</div><h3>What makes someone a hero?</h3><p>Not every story needs a hero. Not every villain needs to stay a villain.</p><a href="#" onclick="return false">READ NOTE →</a></article>
+    <article class="note reveal"><div class="note-meta">RANDOM NOTE</div><h3>Something interesting I learned at 2 AM.</h3><p>Facts, observations, technical rabbit holes, movies, ideas, whatever deserved a place to exist.</p><a href="#" onclick="return false">OPEN NOTE →</a></article>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <div class="section-head reveal"><div><div class="index">TRAIL / 05</div><h2 class="title">Things I’ve Done.</h2><p class="subtitle">A tiny timeline for now. We can make it much richer later.</p></div></div>
+  <div class="trail reveal">
+    <div class="trail-item"><div class="trail-year">2018</div><div class="trail-desc">internet curiosity begins</div></div>
+    <div class="trail-item"><div class="trail-year">2025</div><div class="trail-desc"><strong>Echoes of the End</strong> — creative writing</div></div>
+    <div class="trail-item"><div class="trail-year">2026</div><div class="trail-desc"><strong>MCC Waste Exchange</strong> · <strong>Campus Care</strong> · <strong>Java AWT Compiler</strong></div></div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container minecraft reveal">
+  <div><div class="index">PERSONAL / 06</div><h2 class="title">Another world.</h2><p class="subtitle">A small Minecraft-inspired corner. Not a whole page. Just one of the things that happens to be part of me.</p></div>
+  <div class="voxel" style="background:#0d1017;"><img src="assets/minecraft/minecraft-artifact.png" alt="Pixel-art landscape with a small settlement at sunset" style="width:100%;height:100%;object-fit:cover;display:block;image-rendering:auto;"><div class="voxel-label">A LITTLE ELSEWHERE.</div></div>
+</div></section>
+
+<section class="next"><div class="container"><div class="next-copy reveal"><div class="index">NEXT / 07</div><h2>Where next?</h2><p><span>Right now I’m learning how to build</span><span>Better software.</span><span>Better stories.</span><span>Better questions.</span></p><p class="soft">I’m still figuring out which of these worlds I’ll spend the most time in.</p></div></div></section>
+
+<section class="section" id="about"><div class="container"><div class="section-head reveal"><div><div class="index">ABOUT / 08</div><h2 class="title">Not the résumé.</h2></div></div><div class="about reveal"><div class="about-note">THIS SPACE IS WAITING FOR JOHAN’S VERSION OF THE STORY.</div><p class="about-copy">I’m keeping the proper About story for later, because it should sound like me. This section will eventually explain where all of this came from — the curiosity, the writing, the ideas, the experiments, and the reason I keep making things.</p></div></div></section>
+
+<section class="contact" id="contact"><div class="container reveal"><div class="index">CONTACT / 09</div><h2>You like my rabbit hole?</h2><p>And have something interesting to talk about?</p><div class="contact-links"><a href="https://github.com/johanrohith" target="_blank" rel="noopener">GitHub ↗</a><a href="https://linkedin.com/in/johanrohith" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://instagram.com/johanrohith" target="_blank" rel="noopener">Instagram ↗</a><a href="https://x.com/johanrohith" target="_blank" rel="noopener">X ↗</a></div><div class="random"><button id="randomBtn">Pick something random ↗</button><div class="random-result" id="randomResult"></div></div></div></section>
+
+<footer class="container"><span>Johan Rohith · 2026</span><span>BUILD / WRITE / THINK / EXPLORE</span></footer>
+
+<script>
+const progress=document.getElementById('progress');
+window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;progress.style.width=(Math.max(0,Math.min(1,scrollY/h))*100)+'%'});
+const io=new IntersectionObserver(entries=>entries.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const refresh=document.getElementById('refresh');
+refresh.addEventListener('click',()=>{document.querySelector('.identity').animate([{transform:'scale(1)'},{transform:'scale(.97) rotate(.6deg)'},{transform:'scale(1)'}],{duration:650,easing:'cubic-bezier(.2,.8,.2,1)'});document.querySelector('.terminal').animate([{transform:'rotate(2deg)'},{transform:'rotate(-1deg)'},{transform:'rotate(2deg)'}],{duration:650});});
+const randomItems=['Echoes of the End','the 4D → 5D idea','a weird technical experiment','a question about heroes and villains','something from Elsewhere','a future project that does not exist yet'];
+document.getElementById('randomBtn').addEventListener('click',()=>{const t=randomItems[Math.floor(Math.random()*randomItems.length)];document.getElementById('randomResult').textContent='→ '+t;});
+</script>
+</body></html>
