@@ -29,10 +29,7 @@ button{font:inherit}
 .noise{position:fixed;inset:0;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");z-index:999}
 .container{width:min(calc(100% - 48px),var(--max));margin:0 auto}
 .topbar{position:fixed;top:0;left:0;right:0;z-index:50;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;mix-blend-mode:screen;pointer-events:none}
-.topbar a,.topbar button{pointer-events:auto}
 .mark{font:600 13px "DM Mono",monospace;letter-spacing:.14em;opacity:.9}
-.refresh{border:1px solid var(--line);background:rgba(0,0,0,.22);color:#fff;border-radius:999px;width:38px;height:38px;cursor:pointer;backdrop-filter:blur(12px);transition:.25s;position:relative}
-.refresh:hover{transform:rotate(180deg);border-color:rgba(94,168,255,.6);box-shadow:0 0 30px rgba(94,168,255,.17)}
 
 section{position:relative}
 .hero{min-height:100svh;display:flex;align-items:center;padding:110px 0 90px}
@@ -136,28 +133,29 @@ footer{border-top:1px solid var(--line);padding:28px 0 34px;color:#707682;font:4
 @media(max-width:980px){.hero-grid,.now,.mind-grid,.minecraft,.about{grid-template-columns:1fr}.hero-art{min-height:520px;order:-1}.build-grid{grid-template-columns:1fr}.build.large{grid-row:auto}.else-grid{grid-template-columns:1fr}.note.wide{grid-column:span 1}.terminal{right:-6px;bottom:-18px}.orbit{width:360px;height:360px}}
 @media(max-width:650px){.container{width:min(calc(100% - 28px),var(--max))}.topbar{padding:12px 14px}.hero{padding-top:90px}.hero-grid{gap:18px}.name{font-size:clamp(3.35rem,18vw,6rem)}.name .editorial{margin-left:7vw}.hero-art{min-height:410px}.identity{width:100%}.avatar-glyph{width:130px;height:130px}.avatar-glyph::before{font-size:50px}.tesseract{width:90px;height:90px}.terminal{width:245px;font-size:10px}.sticker{font-size:9px;padding:6px 8px}.section,.mind,.next{padding:82px 0}.title{font-size:2.7rem}.section-head{display:block}.subtitle{margin-top:16px}.now-row{grid-template-columns:110px 1fr}.mock-hero{font-size:21px}.mock-cards{gap:4px}.mock-card{height:60px}.campus-board,.compiler-ui{inset:7%}.campus-board{grid-template-columns:1fr}.campus-board .slide:nth-child(2){display:none}.compiler-ui{grid-template-columns:1fr}.compiler-ui .output{display:none}.minecraft .voxel{height:250px}.contact{padding:90px 0 70px}footer{display:block}footer span{display:block;margin-top:8px}}
 
-/* Focused fixes: keep the page flush to the viewport, keep the utility control out of layout flow,
-   fully reveal the hero terminal, preserve project screenshots, and prevent note-link collisions. */
+/* Focused fixes: keep the page flush to the viewport, compact the hero terminal, preserve project screenshots, and prevent note-link collisions. */
 html,body{width:100%;max-width:100%;min-width:0}
-.topbar{width:min(calc(100% - 48px),var(--max));left:50%;right:auto;transform:translateX(-50%);padding:18px 0}
+.topbar{width:min(calc(100% - 48px),var(--max));left:50%;right:auto;transform:translateX(-50%);padding:18px 0;justify-content:flex-start}
 .visual.exchange,.visual.campus,.visual.compiler{display:flex;align-items:center;justify-content:center}
 .visual.exchange{aspect-ratio:16/9;padding:10px 12px;background:linear-gradient(135deg,#18361f,#112014 55%,#07100b)}
 .visual.exchange .project-shot{width:100%;height:100%;display:block;object-fit:contain;border:1px solid rgba(255,255,255,.12);border-radius:12px;box-shadow:0 20px 50px rgba(0,0,0,.28);transform:rotate(-1.2deg)}
 .visual.campus{aspect-ratio:16/9}
 .visual.compiler{aspect-ratio:16/9;padding:10px;background:linear-gradient(135deg,#0f131b,#080b10)}
 .visual.compiler .compiler-shot{width:100%;height:100%;display:block;object-fit:contain;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:#080b10;box-shadow:0 20px 50px rgba(0,0,0,.26)}
-.terminal{right:14px;bottom:14px;width:min(320px,78%);max-width:calc(100% - 28px);padding:13px 15px}
+/* Hero terminal: compact, positioned directly below IDEAS / ASTRA, with the identity mark shifted left so the elements stay visually separate. */
+.avatar-glyph{position:absolute;left:12%;top:56%;transform:translateY(-50%) rotate(-7deg)}
+.terminal{right:6%;top:24%;bottom:auto;width:235px;max-width:46%;padding:11px 13px;transform:rotate(1deg)}
 .note{display:flex;flex-direction:column;min-height:290px}
 .note a{position:static;display:inline-block;align-self:flex-start;margin-top:auto;padding-top:22px}
 .note.wide{min-height:220px}
 .note.wide a{margin-top:18px}
-@media(max-width:980px){.topbar{padding:14px 0}.terminal{right:12px;bottom:12px;width:min(315px,82%);max-width:calc(100% - 24px)}.visual.exchange,.visual.campus,.visual.compiler{aspect-ratio:16/10}}
-@media(max-width:650px){.topbar{width:min(calc(100% - 28px),var(--max));padding:12px 0}.terminal{right:10px;bottom:10px;width:calc(100% - 32px);max-width:none;font-size:10px}.visual.exchange,.visual.compiler{aspect-ratio:16/10;padding:8px}.visual.campus{aspect-ratio:16/10}.visual.exchange .project-shot,.visual.compiler .compiler-shot{transform:none;border-radius:9px}.note{min-height:0;padding:26px}.note h3{font-size:clamp(1.75rem,7.5vw,2.25rem)}.note p{max-width:none}.note a{padding-top:20px}.note.wide{min-height:0}.note.wide a{margin-top:18px}}
+@media(max-width:980px){.topbar{padding:14px 0}.terminal{right:5%;top:24%;width:220px;max-width:48%}.avatar-glyph{left:10%;top:58%}.visual.exchange,.visual.campus,.visual.compiler{aspect-ratio:16/10}}
+@media(max-width:650px){.topbar{width:min(calc(100% - 28px),var(--max));padding:12px 0}.terminal{right:5%;top:25%;width:205px;max-width:52%;padding:10px 11px;font-size:10px}.avatar-glyph{left:8%;top:59%;}.visual.exchange,.visual.compiler{aspect-ratio:16/10;padding:8px}.visual.campus{aspect-ratio:16/10}.visual.exchange .project-shot,.visual.compiler .compiler-shot{transform:none;border-radius:9px}.note{min-height:0;padding:26px}.note h3{font-size:clamp(1.75rem,7.5vw,2.25rem)}.note p{max-width:none}.note a{padding-top:20px}.note.wide{min-height:0}.note.wide a{margin-top:18px}}
 </style>
 </head>
 <body>
 <div class="progress" id="progress"></div><div class="noise"></div>
-<div class="topbar"><div class="mark">JR // JOHAN ROHITH</div><button class="refresh" id="refresh" aria-label="Refresh visual state">↻</button></div>
+<div class="topbar"><div class="mark">JR // JOHAN ROHITH</div></div>
 
 <header class="hero" id="home">
   <div class="container hero-grid">
@@ -264,8 +262,6 @@ html,body{width:100%;max-width:100%;min-width:0}
 const progress=document.getElementById('progress');
 window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;progress.style.width=(Math.max(0,Math.min(1,scrollY/h))*100)+'%'});
 const io=new IntersectionObserver(entries=>entries.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-const refresh=document.getElementById('refresh');
-refresh.addEventListener('click',()=>{document.querySelector('.identity').animate([{transform:'scale(1)'},{transform:'scale(.97) rotate(.6deg)'},{transform:'scale(1)'}],{duration:650,easing:'cubic-bezier(.2,.8,.2,1)'});document.querySelector('.terminal').animate([{transform:'rotate(2deg)'},{transform:'rotate(-1deg)'},{transform:'rotate(2deg)'}],{duration:650});});
 const randomItems=['Echoes of the End','the 4D → 5D idea','a weird technical experiment','a question about heroes and villains','something from Elsewhere','a future project that does not exist yet'];
 document.getElementById('randomBtn').addEventListener('click',()=>{const t=randomItems[Math.floor(Math.random()*randomItems.length)];document.getElementById('randomResult').textContent='→ '+t;});
 </script>
