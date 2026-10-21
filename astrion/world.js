@@ -232,11 +232,12 @@
       const radiusMax = Math.min(width, height) * 0.52;
       ctx.save();
       ctx.translate(cx, cy);
-      ctx.rotate(reducedMotion ? -0.18 : time * 0.009 - 0.18);
+      const galaxyTime = reducedMotion ? 0 : time;
+      ctx.rotate(reducedMotion ? -0.18 : galaxyTime * 0.009 - 0.18);
       ctx.globalCompositeOperation = "lighter";
       galaxy.forEach(function (particle) {
         const radius = particle.radius * radiusMax;
-        const ang = particle.angle + particle.radius * 0.08 * Math.sin(time * 0.13 + particle.arm);
+        const ang = particle.angle + particle.radius * 0.08 * Math.sin(galaxyTime * 0.13 + particle.arm);
         const x = Math.cos(ang) * radius;
         const y = Math.sin(ang) * radius * 0.39;
         const warm = particle.color > 0.86 && particle.radius < 0.34;
