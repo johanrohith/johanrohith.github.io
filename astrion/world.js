@@ -453,6 +453,18 @@
       if (soundToggle) soundToggle.textContent = "Sound unavailable";
       return;
     }
+    if (audioContext && masterGain && tones.length) {
+      if (audioContext.state === "suspended") audioContext.resume();
+      masterGain.gain.cancelScheduledValues(audioContext.currentTime);
+      masterGain.gain.setTargetAtTime(0.022, audioContext.currentTime, 0.9);
+      audioActive = true;
+      if (soundToggle) {
+        soundToggle.textContent = "Sound: on";
+        soundToggle.setAttribute("aria-pressed", "true");
+      }
+      updateAudio(progress);
+      return;
+    }
     try {
       audioContext = new AudioContextClass();
       masterGain = audioContext.createGain();
