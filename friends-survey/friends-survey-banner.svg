@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="614" viewBox="0 0 1536 614">
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#49bde9"/><stop offset="1" stop-color="#9ce7ee"/></linearGradient>
+ <linearGradient id="hill" x2="0" y2="1"><stop stop-color="#46b4d3"/><stop offset="1" stop-color="#1c7399"/></linearGradient>
+ <linearGradient id="grass" x2="0" y2="1"><stop stop-color="#7cc75a"/><stop offset="1" stop-color="#315f35"/></linearGradient>
+</defs>
+<rect width="1536" height="614" fill="url(#sky)"/>
+<g fill="#fff" opacity=".88">
+ <path d="M0 168 Q20 130 52 163 Q65 105 103 142 Q138 135 155 181 Q194 178 208 221 Q243 225 257 267 Q289 287 309 329 L0 410Z"/>
+ <path d="M1536 170 Q1504 132 1472 167 Q1458 111 1417 146 Q1382 139 1364 183 Q1326 178 1310 223 Q1275 230 1252 272 Q1222 294 1206 335 L1536 412Z"/>
+ <path d="M0 356 Q80 332 150 365 T300 386 L0 450Z" opacity=".6"/>
+ <path d="M1536 354 Q1456 330 1386 364 T1236 387 L1536 450Z" opacity=".6"/>
+ <path d="M90 240 q32 -28 61 2 q-15 -4 -31 10 q-14 -8 -30 -12 M335 385 q24 -15 49 2 q-18 -3 -29 9 q-12 -6 -20 -11 M1110 402 q29 -20 52 1 q-17 -3 -28 9 q-12 -6 -24 -10" />
+</g>
+<path d="M0 468 Q120 440 230 467 T480 475 T720 466 T970 475 T1240 455 T1536 466 V614 H0Z" fill="#43a8c9"/>
+<path d="M0 500 Q180 457 340 493 T650 500 T970 485 T1260 495 T1536 478 V614 H0Z" fill="url(#hill)"/>
+<path d="M0 541 Q160 499 330 540 T660 537 T980 526 T1270 536 T1536 520 V614 H0Z" fill="#2c879c"/>
+<path d="M0 552 Q160 528 310 552 T600 558 T900 542 T1200 551 T1536 538 V614 H0Z" fill="url(#grass)"/>
+<g stroke="#d5ee8e" stroke-width="3" stroke-linecap="round" opacity=".8">
+ <path d="M50 614l-7-45 M72 614l9-38 M116 614l-3-50 M168 614l11-35 M230 614l-8-47 M290 614l10-32 M380 614l-2-45 M440 614l9-38 M510 614l-9-49 M600 614l14-37 M710 614l-5-45 M820 614l10-39 M930 614l-7-48 M1050 614l14-37 M1170 614l-5-46 M1280 614l12-37 M1410 614l-4-45 M1490 614l11-38"/>
+</g>
+<g fill="#fff" stroke="#f8fff2" stroke-width="2">
+ <g transform="translate(96 560)"><circle r="5" cx="0" cy="-7"/><circle r="5" cx="7" cy="0"/><circle r="5" cx="0" cy="7"/><circle r="5" cx="-7" cy="0"/><circle r="3" fill="#f8d86b"/></g>
+ <g transform="translate(400 585)"><circle r="5" cx="0" cy="-7"/><circle r="5" cx="7" cy="0"/><circle r="5" cx="0" cy="7"/><circle r="5" cx="-7" cy="0"/><circle r="3" fill="#f8d86b"/></g>
+ <g transform="translate(725 574)"><circle r="5" cx="0" cy="-7"/><circle r="5" cx="7" cy="0"/><circle r="5" cx="0" cy="7"/><circle r="5" cx="-7" cy="0"/><circle r="3" fill="#f8d86b"/></g>
+ <g transform="translate(1100 583)"><circle r="5" cx="0" cy="-7"/><circle r="5" cx="7" cy="0"/><circle r="5" cx="0" cy="7"/><circle r="5" cx="-7" cy="0"/><circle r="3" fill="#f8d86b"/></g>
+ <g transform="translate(1460 562)"><circle r="5" cx="0" cy="-7"/><circle r="5" cx="7" cy="0"/><circle r="5" cx="0" cy="7"/><circle r="5" cx="-7" cy="0"/><circle r="3" fill="#f8d86b"/></g>
+</g>
+<g fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M1170 235 Q1255 278 1304 246 Q1368 202 1335 180 Q1304 161 1289 188 Q1273 218 1304 235 Q1350 263 1402 229 L1473 188" stroke-dasharray="10 13"/>
+ <path d="M1136 226 L1179 211 L1161 247 Z M1136 226 L1162 233 L1179 211 M1162 233 L1161 247"/>
+</g>
+<g fill="#fff" font-family="Comic Sans MS, Segoe Print, cursive" font-size="86" text-anchor="middle">
+ <text x="720" y="265">Friend’s Survey</text>
+</g>
+<path d="M536 290 Q720 310 887 290" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+<path d="M450 192l-19-7 M465 174l-7-18 M478 195l18-12" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+</svg>
